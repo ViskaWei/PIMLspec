@@ -50,7 +50,7 @@ class TestDataLoader():
         self.MODEL = {
             "ResTune" : {"type": "Alex", "param": {"step": self.step, "res":10000}},
         }
-        self.PARAM = {"arm": self.arm}
+        self.OP = {"arm": self.arm}
         self.DATA  = {"wavesky": self.wavesky}
 
     
