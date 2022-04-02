@@ -1,7 +1,7 @@
 import numpy as np
 from unittest import TestCase
 from spec.crust.data.spec import StellarSpec
-from test.dataloader import TestDataLoader
+from .dataloader import TestDataLoader
 
 class TestBase(TestCase):
     def __init__(self, *args, **kwargs):
