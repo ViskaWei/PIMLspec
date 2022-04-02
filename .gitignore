@@ -1,0 +1,8 @@
+/.env
+/.vscode
+/__init__.py
+/init
+/modules
+/spec
+/test
+/base
