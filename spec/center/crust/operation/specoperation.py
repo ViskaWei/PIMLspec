@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from base.center.crust.baseoperation import BaseModelOperation,\
-    BaseOperation, SplitOperation, LogOperation
+from base.center.crust.baseoperation import BaseOperation,\
+    BaseModelOperation, SplitOperation, LogOperation
 
 from ..data.constants import Constants
 from ..data.spec import BaseSpec, StellarSpec
@@ -17,8 +17,7 @@ class BaseSpecModelOperation(BaseModelOperation, BaseSpecOperation):
     @abstractmethod
     def set_model(self, model_type) -> BaseSpecModel:
         pass
-    def perform(self, data):
-        return self.model.apply(data)
+
     def perform_on_Spec(self, Spec: BaseSpec) -> BaseSpec:
         self.model.apply_on_Spec(Spec)
 
