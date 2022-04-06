@@ -1,19 +1,28 @@
 from abc import ABC, abstractmethod
 
-from base.center.crust.baseoperation import BaseOperation, BaseModelOperation, SplitOperation 
+from base.center.crust.baseoperation import BaseModelOperation,\
+    BaseOperation, SplitOperation, LogOperation
 
 from ..data.constants import Constants
 from ..data.spec import BaseSpec, StellarSpec
 from ..model.specmodel import BaseSpecModel, AlexResolutionSpecModel, NpResolutionSpecModel
-from .baseoperation import BaseOperation, ObsOperation,\
-    LogOperation, SkyOperation, MapSNROperation
-
+from .baseoperation import ObsOperation, SkyOperation, MapSNROperation
 
 class BaseSpecOperation(BaseOperation):
     @abstractmethod
-    def perform_on_Spec(self, Spec: StellarSpec):
+    def perform_on_Spec(self, Spec: BaseSpec):
         pass
 
+class BaseSpecModelOperation(BaseModelOperation, BaseSpecOperation):
+    @abstractmethod
+    def set_model(self, model_type) -> BaseSpecModel:
+        pass
+    def perform(self, data):
+        return self.model.apply(data)
+    def perform_on_Spec(self, Spec: BaseSpec) -> BaseSpec:
+        self.model.apply_on_Spec(Spec)
+
+#stellarspec-------------------------------------------------------
 class LogSpecOperation(LogOperation, BaseSpecOperation):
     def perform_on_Spec(self, Spec: StellarSpec):
         Spec.logflux = self.perform(Spec.flux) 
@@ -39,7 +48,11 @@ class MapSNRSpecOperation(MapSNROperation, BaseSpecOperation):
     def perform_on_Spec(self, Spec: StellarSpec) -> StellarSpec:
         Spec.map_snr, Spec.map_snr_inv = self.perform(Spec.flux, Spec.sky)
 
-class TuneSpecOperation(BaseModelOperation, BaseSpecOperation):
+class AddPfsObsSpecOperation(ObsOperation, BaseSpecOperation):
+    def perform_on_Spec(self, Spec: StellarSpec) -> StellarSpec:
+        Spec.Obs = self.perform(Spec.sky, Spec.step)
+
+class TuneSpecOperation(BaseSpecModelOperation):
     """ class for resolution tunable dataIF i.e flux, wave. """
     def set_model(self, model_type) -> BaseSpecModel:
         if model_type == "Alex":
@@ -49,13 +62,3 @@ class TuneSpecOperation(BaseModelOperation, BaseSpecOperation):
         else:
             raise ValueError("Unknown Resolution model type: {}".format(model_type))
         return model
-
-    def perform(self, data):
-        return self.model.apply(data)
-    
-    def perform_on_Spec(self, Spec: StellarSpec) -> StellarSpec:
-        self.model.apply_on_Spec(Spec)
-    
-class AddPfsObsSpecOperation(ObsOperation, BaseSpecOperation):
-    def perform_on_Spec(self, Spec: StellarSpec) -> StellarSpec:
-        Spec.Obs = self.perform(Spec.sky, Spec.step)

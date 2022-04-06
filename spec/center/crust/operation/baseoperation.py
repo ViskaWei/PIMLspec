@@ -1,18 +1,16 @@
 import numpy as np
+
 from base.center.crust.baseoperation import BaseOperation
 
 from spec.center.core.obs.baseobs import Obs
 from spec.center.core.obs.sky import StellarSky
 from spec.center.core.obs.snrmapper import NoiseLevelSnrMapper
 
+
 class ObsOperation(BaseOperation):
     def perform(self, sky, step):
         if (step is None) or (step < 1): step = 1
         return Obs(sky, step=step) 
-
-class LogOperation(BaseOperation):
-    def perform(self, flux):
-        return np.log(flux)
 
 class SkyOperation(StellarSky, BaseOperation):
     def perform(self, wave):
