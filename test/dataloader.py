@@ -6,15 +6,17 @@ from spec.center.core.obs.sky import StellarSky
 
 ROOT     = os.environ["ROOT"]
 TEST     = os.environ["TEST"]
-SPECGRID = os.environ["SPECGRID"]
 PREPNN   = os.environ["PREPNN"]
+SPECGRID = os.environ["SPECGRID"]
+BOSZGRID = os.environ["BOSZGRID"]
 
 
 
 class TestDataLoader():
     def __init__(self):
-        self.SPEC_PATH = os.path.join(TEST, "spec.h5")
-        self.WSKY_PATH = os.path.join(TEST, "wavesky.npy")
+        self.BOSZ_PATH = os.path.join(BOSZGRID, "bosz_5000_RHB.h5")
+        self.SPEC_PATH = os.path.join(TEST, "./testdata/spec.h5")
+        self.WSKY_PATH = os.path.join(TEST, "./testdata/wavesky.npy")
         self.arm = "RedM"
         self.midx = 1377
         self.wave_rng = Constants.ARM_RNGS[self.arm]
@@ -51,7 +53,14 @@ class TestDataLoader():
             "ResTune" : {"type": "Alex", "param": {"step": self.step, "res":10000}},
         }
         self.OP = {"arm": self.arm}
-        self.DATA  = {"wavesky": self.wavesky}
+        self.DATA  = {"WSKYPATH": self.WSKY_PATH, "wavesky": self.wavesky}
+        self.PARAM = {
+            "OBJECT": {"BOSZ_PATH": self.BOSZ_PATH},
+            "MODEL": self.MODEL,
+            "OP": self.OP,
+            "DATA": self.DATA,
+            "OUT" : {},
+        }
 
     
     def load_spec(self) -> dict:

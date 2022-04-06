@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 from base.interface.gateway.baseloaderIF import DataLoaderIF, DictLoaderIF, ObjectLoaderIF
 from spec.center.crust.data.spec import StellarSpec
 
-class SpecLoaderIF(ObjectLoaderIF):
+class BoszLoaderIF(ObjectLoaderIF):
     """ class for loading Spec. """
     def set_param(self, PARAM):
-        self.loader = DictLoaderIF(PARAM["SPEC_PATH"])
+        self.loader = DictLoaderIF(PARAM["BOSZ_PATH"])
 
     def load(self):
         flux = self.loader.load_arg("flux")
@@ -14,8 +14,8 @@ class SpecLoaderIF(ObjectLoaderIF):
         return StellarSpec(wave, flux)
 
 class SkyLoaderIF(DictLoaderIF):
-    def load(self, arm, res):
-        name = f"{arm}_R{res}"
+    def load(self, arm, bosz_res):
+        name = f"{arm}_R{bosz_res}" #RedM_R5000
         sky = self.load_arg(name)
         return sky
 

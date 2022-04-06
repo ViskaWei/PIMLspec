@@ -9,7 +9,7 @@ class TestSky(TestBase):
         skyH = Sky.rebin_sky_for_wave(self.D.waveH)
         self.same_array(skyH, self.D.skyH)
 
-        Sky2  = StellarSky.from_path(os.path.join(os.environ["TEST"], "wavesky.npy"))
+        Sky2  = StellarSky.from_path(os.path.join(os.environ["TEST"], "./testdata/wavesky.npy"))
         self.same_array(Sky.wave, Sky2.wave)
         self.same_array(Sky.sky,  Sky2.sky)
         sky2H = Sky2.rebin_sky_for_wave(self.D.waveH)
