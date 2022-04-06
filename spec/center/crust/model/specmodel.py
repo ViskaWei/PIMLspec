@@ -1,8 +1,8 @@
 import numpy as np
 from abc import ABC, abstractmethod
-from base.crust.basemodel import BaseModel
+from base.center.crust.basemodel import BaseModel
 
-from spec.core.resolution import AlexResolution, NpResolution
+from spec.center.core.resolution import AlexResolution, NpResolution
 from ..data.spec import StellarSpec
 
 class BaseSpecModel(BaseModel):

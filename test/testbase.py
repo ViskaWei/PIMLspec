@@ -1,6 +1,6 @@
 import numpy as np
 from unittest import TestCase
-from spec.crust.data.spec import StellarSpec
+from spec.center.crust.data.spec import StellarSpec
 from test.dataloader import TestDataLoader
 
 class TestBase(TestCase):

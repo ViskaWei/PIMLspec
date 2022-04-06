@@ -1,6 +1,6 @@
 import numpy as np
 from unittest import TestCase
-from spec.core.resolution import  AlexResolution, NpResolution
+from spec.center.core.resolution import  AlexResolution, NpResolution
 
 class TestResolution(TestCase):
 

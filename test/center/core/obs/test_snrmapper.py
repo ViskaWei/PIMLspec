@@ -1,6 +1,6 @@
 import numpy as np
 from unittest import TestCase
-from spec.core.obs.snrmapper import NoiseLevelSnrMapper
+from spec.center.core.obs.snrmapper import NoiseLevelSnrMapper
 
 class TestSnrMapper(TestCase):
     def test_NoiseLevelSnrMapper(self):

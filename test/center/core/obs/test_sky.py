@@ -1,5 +1,5 @@
 import os
-from spec.core.obs.sky import StellarSky
+from spec.center.core.obs.sky import StellarSky
 from test.testbase import TestBase
 
 

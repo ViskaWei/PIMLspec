@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from base.crust.baseoperation import BaseOperation, BaseModelOperation, SplitOperation 
+from base.center.crust.baseoperation import BaseOperation, BaseModelOperation, SplitOperation 
 
 from ..data.constants import Constants
 from ..data.spec import BaseSpec, StellarSpec

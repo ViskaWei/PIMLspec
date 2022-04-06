@@ -1,8 +1,8 @@
 import os
 import h5py
 
-from spec.crust.data.constants import Constants
-from spec.core.obs.sky import StellarSky
+from spec.center.crust.data.constants import Constants
+from spec.center.core.obs.sky import StellarSky
 
 ROOT     = os.environ["ROOT"]
 TEST     = os.environ["TEST"]

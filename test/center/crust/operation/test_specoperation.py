@@ -1,9 +1,9 @@
 
 import numpy as np
 from test.testbase import TestBase
-from spec.core.resolution import Resolution
+from spec.center.core.resolution import Resolution
 
-from spec.crust.operation.specoperation import BaseSpecOperation, \
+from spec.center.crust.operation.specoperation import BaseSpecOperation, \
     LogSpecOperation, SplitSpecOperation, TuneSpecOperation,\
     SkySpecOperation, MapSNRSpecOperation
 

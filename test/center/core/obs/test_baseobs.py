@@ -1,6 +1,6 @@
 import numpy as np
 from unittest import TestCase
-from spec.core.obs.baseobs import Obs
+from spec.center.core.obs.baseobs import Obs
 
 class TestBaseObs(TestCase):
     def test_Obs(self):

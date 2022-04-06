@@ -1,6 +1,6 @@
 import numpy as np
 from test.testbase import TestBase
-from spec.crust.process.specprocess import StellarSpecProcess
+from spec.center.crust.process.specprocess import StellarSpecProcess
 
 class TestSpecProcess(TestBase):
     def test_BaseProcess(self):

@@ -1,9 +1,9 @@
 import numpy as np
-from base.crust.baseoperation import BaseOperation
+from base.center.crust.baseoperation import BaseOperation
 
-from spec.core.obs.baseobs import Obs
-from spec.core.obs.sky import StellarSky
-from spec.core.obs.snrmapper import NoiseLevelSnrMapper
+from spec.center.core.obs.baseobs import Obs
+from spec.center.core.obs.sky import StellarSky
+from spec.center.core.obs.snrmapper import NoiseLevelSnrMapper
 
 class ObsOperation(BaseOperation):
     def perform(self, sky, step):

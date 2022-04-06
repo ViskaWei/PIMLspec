@@ -1,5 +1,5 @@
 
-from base.crust.baseprocess import BaseProcess
+from base.center.crust.baseprocess import BaseProcess
 from ..data.spec import BaseSpec, StellarSpec
 
 from ..operation.specoperation import BaseSpecOperation,\
