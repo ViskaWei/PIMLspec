@@ -11,7 +11,7 @@ class TestSpecProcess(TestBase):
         np.random.seed(922)
 
         Process = StellarSpecProcess()
-        Process.set_process(self.D.PARAM, self.D.MODEL, self.D.DATA)
+        Process.set_process(self.D.OP, self.D.MODEL, self.D.DATA)
         Process.start(Spec)
         self.check_StellarSpec(Spec)
         
