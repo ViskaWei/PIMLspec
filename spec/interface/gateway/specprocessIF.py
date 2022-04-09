@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from spec.center.crust.data.spec import StellarSpec
+from spec.center.crust.data.basespec import StellarSpec
 from spec.center.crust.process.specprocess import StellarSpecProcess
 from base.interface.gateway.baseprocessIF import ProcessIF
 from .specloaderIF import BoszLoaderIF, WaveSkyLoaderIF

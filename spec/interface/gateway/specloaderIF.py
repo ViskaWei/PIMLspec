@@ -1,7 +1,7 @@
 import os
 from abc import ABC, abstractmethod
 from base.interface.gateway.baseloaderIF import DataLoaderIF, DictLoaderIF, ObjectLoaderIF
-from spec.center.crust.data.spec import StellarSpec
+from spec.center.crust.data.basespec import StellarSpec
 
 class BoszLoaderIF(ObjectLoaderIF):
     """ class for loading Spec. """

@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from base.center.crust.basemodel import BaseModel
 
 from spec.center.core.resolution import AlexResolution, NpResolution
-from ..data.spec import StellarSpec
+from ..data.basespec import StellarSpec
 
 class BaseSpecModel(BaseModel):
     @property

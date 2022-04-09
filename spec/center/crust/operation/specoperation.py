@@ -4,7 +4,7 @@ from base.center.crust.baseoperation import BaseOperation,\
     BaseModelOperation, SplitOperation, LogOperation
 
 from ..data.constants import Constants
-from ..data.spec import BaseSpec, StellarSpec
+from ..data.basespec import BaseSpec, StellarSpec
 from ..model.specmodel import BaseSpecModel, AlexResolutionSpecModel, NpResolutionSpecModel
 from .baseoperation import ObsOperation, SkyOperation, MapSNROperation
 
