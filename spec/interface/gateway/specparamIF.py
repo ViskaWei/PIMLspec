@@ -19,13 +19,14 @@ class SpecParamIF(BaseParamIF):
             self.wavesky  = WaveSkyLoaderIF(WSKY_PATH).load()
         else:
             self.wavesky  = wavesky
+        self.WSKY_PATH = WSKY_PATH
 
     def get(self):
         OP_MODEL = {'ResTune': {'type': self.ResTune, 'param': {'step': self.step, 'res': self.pfs_res}}}
 
         OP_PARAM = {'arm': self.arm}
 
-        OP_DATA  =  {'WSKYPATH': self.WSKY_PATH}       
+        OP_DATA  =  {'wavesky': self.wavesky, 'WSKYPATH': self.WSKY_PATH}       
 
         OP_OUT   =  {}
         return OP_MODEL, OP_PARAM, OP_DATA, OP_OUT
