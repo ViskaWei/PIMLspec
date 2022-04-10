@@ -7,7 +7,7 @@ class TestBaseSpecProcessIF(TestBase):
         pass
 
     def test_StellarSpecProcessIF(self):
-
+        
         PIF = StellarSpecProcessIF()
         PIF.interact(self.D.PARAM)
         self.check_StellarSpec(PIF.Object)

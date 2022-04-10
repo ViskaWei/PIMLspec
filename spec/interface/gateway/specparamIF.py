@@ -1,32 +1,34 @@
 
 
 from .specloaderIF import WaveSkyLoaderIF
-from base.interface.gateway.baseparamIF import BaseParamIF
+from base.interface.gateway.baseparamIF import ParamIF
 
 
-class SpecParamIF(BaseParamIF):
+class SpecParamIF(ParamIF):
 
-    def set_param(self, step=10, bosz_res=5000, arm="RedM", ResTune="Alex", WSKY_PATH=None, wavesky=None):
-        self.step = step
-        self.bosz_res = bosz_res
-        self.arm = arm
-        self.ResTune = ResTune
-        self.pfs_res = bosz_res * 2
-        self.load_wavesky(wavesky, WSKY_PATH)
+    def set_param(self, PARAM):
+        self.arm       = self.get_arg('arm', PARAM)
+        self.step      = self.get_arg('step', PARAM)
+        self.bosz_res  = self.get_arg('bosz_res', PARAM, 5000)
+        self.ResTune   = self.get_arg('ResTune', PARAM, "Alex")
+        self.wavesky   = self.get_arg('wavesky', PARAM)
+        self.WSKY_PATH = self.get_arg('WSKYPATH', PARAM)
+        self.OBJECT_PATH = self.get_arg('OBJECTPATH', PARAM)
 
-    def load_wavesky(self, wavesky, WSKY_PATH):
-        if wavesky is None:
-            self.wavesky  = WaveSkyLoaderIF(WSKY_PATH).load()
-        else:
-            self.wavesky  = wavesky
-        self.WSKY_PATH = WSKY_PATH
+        self.pfs_res = self.bosz_res * 2
+        self.load_wavesky()
+        
+        self.set_param_dict()
 
-    def get(self):
-        OP_MODEL = {'ResTune': {'type': self.ResTune, 'param': {'step': self.step, 'res': self.pfs_res}}}
+    def load_wavesky(self):
+        if self.wavesky is None:
+            self.wavesky  = WaveSkyLoaderIF(self.WSKY_PATH).load()
 
-        OP_PARAM = {'arm': self.arm}
+    def set_param_dict(self):
+        self.OBJECT = {"OBJECTPATH": self.OBJECT_PATH}
 
-        OP_DATA  =  {'wavesky': self.wavesky, 'WSKYPATH': self.WSKY_PATH}       
+        self.MODEL = {'ResTune': {'type': self.ResTune, 'param': {'step': self.step, 'res': self.pfs_res}}}
 
-        OP_OUT   =  {}
-        return OP_MODEL, OP_PARAM, OP_DATA, OP_OUT
+        self.OP = {'arm': self.arm}
+
+        self.DATA  =  {'wavesky': self.wavesky, 'WSKYPATH': self.WSKY_PATH}       

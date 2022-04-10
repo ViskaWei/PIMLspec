@@ -6,7 +6,7 @@ from spec.center.crust.data.basespec import StellarSpec
 class BoszLoaderIF(ObjectLoaderIF):
     """ class for loading Spec. """
     def set_param(self, PARAM):
-        self.loader = DictLoaderIF(PARAM["BOSZ_PATH"])
+        self.loader = DictLoaderIF(PARAM["OBJECTPATH"])
 
     def load(self):
         flux = self.loader.load_arg("flux")

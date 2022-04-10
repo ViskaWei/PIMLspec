@@ -14,7 +14,9 @@ BOSZGRID = os.environ["BOSZGRID"]
 
 class TestDataLoader():
     def __init__(self):
-        self.BOSZ_PATH = os.path.join(BOSZGRID, "bosz_5000_RHB.h5")
+        self.bosz_res  = 5000
+        self.box_name  = "R"
+        self.BOSZ_PATH = os.path.join(BOSZGRID, f"bosz_{self.bosz_res}_{self.box_name}HB.h5")
         self.SPEC_PATH = os.path.join(TEST, "./testdata/spec.h5")
         self.WSKY_PATH = os.path.join(TEST, "./testdata/wavesky.npy")
         self.arm = "RedM"
@@ -49,19 +51,8 @@ class TestDataLoader():
         self.wavesky   = spec_dict["wavesky"]
 
     def set_spec_param(self):
-        self.MODEL = {
-            "ResTune" : {"type": "Alex", "param": {"step": self.step, "res":10000}},
-        }
-        self.OP = {"arm": self.arm}
-        self.DATA  = {"WSKYPATH": self.WSKY_PATH, "wavesky": self.wavesky}
-        self.PARAM = {
-            "OBJECT": {"BOSZ_PATH": self.BOSZ_PATH},
-            "MODEL": self.MODEL,
-            "OP": self.OP,
-            "DATA": self.DATA,
-            "OUT" : {},
-        }
-
+        self.PARAM = {"OBJECTPATH": self.BOSZ_PATH, "bosz_res": self.bosz_res, "arm": self.arm, \
+            "ResTune": "Alex", "step": 10, "WSKYPATH": self.WSKY_PATH, "wavesky": self.wavesky}
     
     def load_spec(self) -> dict:
         DArgvals = {}
