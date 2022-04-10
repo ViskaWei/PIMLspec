@@ -1,8 +1,6 @@
-
-
 from .specloaderIF import WaveSkyLoaderIF
 from base.interface.gateway.baseparamIF import ParamIF
-
+from spec.center.crust.data.constants import Constants
 
 class SpecParamIF(ParamIF):
 
@@ -12,8 +10,8 @@ class SpecParamIF(ParamIF):
         self.bosz_res  = self.get_arg('bosz_res', PARAM, 5000)
         self.ResTune   = self.get_arg('ResTune', PARAM, "Alex")
         self.wavesky   = self.get_arg('wavesky', PARAM)
-        self.WSKY_PATH = self.get_arg('WSKYPATH', PARAM)
-        self.OBJECT_PATH = self.get_arg('OBJECTPATH', PARAM)
+        self.WSKY_PATH = self.get_arg('WSKYPATH', PARAM, Constants.WSKY_PATH)
+        self.OBJECT_PATH = self.get_arg('OBJECTPATH', PARAM, Constants.BOSZ_PATH)
 
         self.pfs_res = self.bosz_res * 2
         self.load_wavesky()

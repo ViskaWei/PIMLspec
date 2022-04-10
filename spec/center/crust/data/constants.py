@@ -1,4 +1,3 @@
-
 class Constants():
         """
         All Constants for project. Constants are Capitalized.
@@ -9,3 +8,6 @@ class Constants():
 
         DWstep = {"Blue": 10, "RedL": 10, "RedM": 10, "NIR": 10, "BL": 10, "RML": 10, "NL": 10}
         DWires = {"Blue": 2300, "RedL": 3000, "RedM": 5000, "NIR": 4300, "B": 2300, "R": 5000, "N": 4300}
+
+        WSKY_PATH = "/home/swei20/PIML/PIMLspec/test/testdata/wavesky.npy"
+        BOSZ_PATH = "/datascope/subaru/user/swei20/data/pfsspec/import/stellar/grid/bosz_5000_RHB.h5"
