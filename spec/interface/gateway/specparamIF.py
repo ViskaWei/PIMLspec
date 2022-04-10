@@ -3,7 +3,7 @@ from base.interface.gateway.baseparamIF import ParamIF
 from spec.center.crust.data.constants import Constants
 
 class SpecParamIF(ParamIF):
-    required_attribes = ["arm", "step"]
+    required_attribute = ["arm", "step"]
 
     def set_param(self, PARAM):
         self.arm       = self.get_arg('arm', PARAM)
