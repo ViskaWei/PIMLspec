@@ -10,7 +10,7 @@ class StellarSpecProcessIF(ProcessIF):
     def __init__(self) -> None:
         super().__init__()
         self.Loader   = BoszLoaderIF()
-        self.paramIF  = StellarSpecParamIF()
+        self.ParamIF  = StellarSpecParamIF()
 
         self.Process  = StellarSpecProcess()
         self.Storer   = None
