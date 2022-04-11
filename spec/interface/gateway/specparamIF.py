@@ -2,7 +2,7 @@ from .specloaderIF import WaveSkyLoaderIF
 from base.interface.gateway.baseparamIF import ParamIF
 from spec.center.crust.data.constants import Constants
 
-class SpecParamIF(ParamIF):
+class StellarSpecParamIF(ParamIF):
     required_attribute = ["arm", "step"]
 
     def set_param(self, PARAM):
