@@ -4,13 +4,13 @@ from spec.center.crust.data.basespec import StellarSpec
 from spec.center.crust.process.specprocess import StellarSpecProcess
 
 from .specloaderIF import BoszLoaderIF
-from .specparamIF import SpecParamIF
+from .specparamIF import StellarSpecParamIF
 
 class StellarSpecProcessIF(ProcessIF):
     def __init__(self) -> None:
         super().__init__()
         self.Loader   = BoszLoaderIF()
-        self.paramIF  = SpecParamIF()
+        self.paramIF  = StellarSpecParamIF()
 
         self.Process  = StellarSpecProcess()
         self.Storer   = None
